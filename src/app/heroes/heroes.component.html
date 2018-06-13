@@ -1,0 +1,15 @@
+<div class="card-container">
+  <div class="card" *ngFor="let hero of heroes; let i = index">
+    <div class="card-avatar">
+      <div class="card-avatar--pic">
+        <img [src]="hero._picture" alt="Hero Picture">
+      </div>
+      <span class="card-avatar--badge">{{ i + 1 | ordinal }}</span>
+    </div>
+    <div class="card-description">
+      <h2>{{hero._nickname}}</h2>
+      <p>{{hero._name}}</p>
+      <p>Estatura: {{hero._height}}mt</p>
+    </div>
+  </div>
+</div>
