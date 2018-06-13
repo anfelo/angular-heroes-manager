@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@types/jasmine": "2.5.36",
-    "@types/node": "^6.0.112",
+    "@types/node": "^6.0.113",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^3.0.4",
     "css-loader": "^0.26.4",
@@ -57,7 +57,7 @@
     "rimraf": "^2.5.2",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.13.2",
-    "typescript": "~2.3.1",
+    "typescript": "^2.9.2",
     "webpack": "2.2.1",
     "webpack-dev-server": "2.4.1",
     "webpack-merge": "^3.0.0"
