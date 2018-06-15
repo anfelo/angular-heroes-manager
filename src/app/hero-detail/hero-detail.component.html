@@ -23,7 +23,10 @@
           <input type="text" value="{{(hero$ | async)._nickname}}" #nickname />
         </label>
       </p>
-      <input class="btn btn-primary" type="button" value="Save" />
+      <input type="hidden" value="{{(hero$ | async)._picture}}" #picture />
+      <input class="btn btn-primary" type="button" value="Save"
+             (click)="saveHero(name.value, height.value, nickname.value, picture.value);
+                      name.value=''; height.value=''; nickname.value=''; picture.value=''" />
       <input (click)="goBack()" class="btn btn-secondary" type="button" value="Go Back" />
     </div>
   </div>

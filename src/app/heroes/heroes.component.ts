@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Hero } from '../models/hero';
 import { AppState } from '../models/app-state';
 import * as heroActions from '../store/actions/hero.actions';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-heroes',
@@ -19,7 +20,11 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit() {
     this.heroes$ = this.store.select(state => state.heroes);
-    this.getHeroes();
+    this.heroes$.subscribe(heroes => {
+      if(!heroes.length){
+        this.getHeroes();
+      }
+    })
   }
 
   getHeroes(): void {

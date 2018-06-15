@@ -8,6 +8,7 @@ import { filter, map } from 'rxjs/operators';
 
 import { Hero } from '../models/hero';
 import { AppState } from '../models/app-state';
+import * as heroActions from '../store/actions/hero.actions'; 
 
 @Component({
   selector: 'app-hero-detail',
@@ -35,13 +36,24 @@ export class HeroDetailComponent implements OnInit {
     );
   }
 
-  // save(): void {
-  //   this.heroService.updateHero(this.hero)
-  //     .subscribe(() => this.goBack());
-  // }
+  saveHero(name: string, height: number, nickname: string, picture: string): void {
+    if(!this.validForm(name, height, nickname)) return;
+    const hero: Hero = {
+      _name: name,
+      _height: height,
+      _nickname: nickname,
+      _picture: picture
+    } 
+    this.store.dispatch(new heroActions.UpdateHeroAction(hero));
+    this.goBack();
+  }
 
   goBack() {
     this.location.back();
+  }
+
+  validForm(name: string, height: number, nickname: string) {
+    return name.trim() && nickname.trim() && !isNaN(height);
   }
 
 }
