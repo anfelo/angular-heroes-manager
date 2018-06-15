@@ -10,10 +10,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
-import { OrdinalPipe } from './extras/ordinal.pipe';
+import { OrdinalPipe } from './ordinal/ordinal.pipe';
 import { heroReducer } from './store/reducers/hero.reducers';
 import { HeroEffects } from './store/effects/hero.effects';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './router/app-routing.module';
 
 @NgModule({
   imports: [

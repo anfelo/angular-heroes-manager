@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { Hero } from '../models/hero';
 import { AppState } from '../models/app-state';
 import * as heroActions from '../store/actions/hero.actions';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-heroes',

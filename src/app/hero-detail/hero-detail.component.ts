@@ -43,7 +43,7 @@ export class HeroDetailComponent implements OnInit {
       _height: height,
       _nickname: nickname,
       _picture: picture
-    } 
+    }
     this.store.dispatch(new heroActions.UpdateHeroAction(hero));
     this.goBack();
   }
@@ -52,7 +52,7 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
-  validForm(name: string, height: number, nickname: string) {
+  validForm(name: string, height: number, nickname: string): boolean {
     return name.trim() && nickname.trim() && !isNaN(height);
   }
 
