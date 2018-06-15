@@ -3,6 +3,7 @@
 }
 
 body {
+  margin: 0;
   background: white url("/src/assets/img/bg-heroes.jpg") no-repeat center center fixed;
   background-size: cover;
   color: #333;

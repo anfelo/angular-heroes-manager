@@ -1,0 +1,88 @@
+.hero-detail-container {
+  width: 100%;
+  margin-top: 150px;
+  background-color: white;
+  box-shadow: 0 -1px 5px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+.hero-detail {
+  transform: translateY(-70px);
+}
+
+.hero-pic {
+  width: 140px;
+  height: 140px;
+  margin: auto;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+  overflow: hidden;
+}
+
+.hero-pic img {
+  width: 100%;
+}
+
+.hero-name {
+  font-family: 'Bangers', cursive;
+  font-size: 3.5em;
+  color: red;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.hero-form {
+  width: 90%;
+  margin: auto;
+}
+
+.hero-form p {
+  text-align: left;
+}
+
+.hero-form label {
+ font-weight: bold;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px 7px;
+  margin: auto;
+  border: none;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background-color: lightseagreen;
+  color: white;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+@media (min-width: 700px) {
+  .hero-form {
+    width: 48%;
+  }
+  .btn {
+    width: 100px;
+  }
+}
+
+@media (min-width: 968px) {
+  .hero-form {
+    width: 32%;
+  }
+}

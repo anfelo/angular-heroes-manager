@@ -8,13 +8,16 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
 import { OrdinalPipe } from './extras/ordinal.pipe';
 import { heroReducer } from './store/reducers/hero.reducers';
 import { HeroEffects } from './store/effects/hero.effects';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({heroes: heroReducer}),
     EffectsModule.forRoot([HeroEffects]),
@@ -23,6 +26,7 @@ import { HeroEffects } from './store/effects/hero.effects';
   declarations: [
     AppComponent,
     HeroesComponent,
+    HeroDetailComponent,
     OrdinalPipe
   ],
   bootstrap: [ AppComponent ]

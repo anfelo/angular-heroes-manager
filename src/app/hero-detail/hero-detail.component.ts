@@ -29,9 +29,9 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const nickname = this.route.snapshot.paramMap.get('nickname');
+    const nickname = this.route.snapshot.paramMap.get('nickname').toLowerCase();
     this.hero$ = this.store.select(state => state.heroes).pipe(
-      map(heroes => heroes.filter(hero => hero._nickname === nickname)[0])
+      map(heroes => heroes.filter(hero => hero._nickname.toLowerCase() === nickname)[0])
     );
   }
 
