@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import { Hero } from '../models/hero';
 import { AppState } from '../models/app-state';
@@ -29,8 +29,10 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const nickname = +this.route.snapshot.paramMap.get('nickname');
-    this.hero$ = this.store.select()
+    const nickname = this.route.snapshot.paramMap.get('nickname');
+    this.hero$ = this.store.select(state => state.heroes).pipe(
+      map(heroes => heroes.filter(hero => hero._nickname === nickname)[0])
+    );
   }
 
   // save(): void {
