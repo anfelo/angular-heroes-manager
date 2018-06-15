@@ -1,5 +1,7 @@
 <div class="card-container">
-  <div class="card" *ngFor="let hero of heroes$ | async; let i = index">
+  <a class="card" *ngFor="let hero of heroes$ | async; let i = index"
+     routerLink="/heroes/{{hero._nickname}}">
+
     <div class="card-avatar">
       <div class="card-avatar--pic">
         <img [src]="hero._picture" alt="Hero Picture">
@@ -11,5 +13,6 @@
       <p>{{hero._name}}</p>
       <p>Estatura: {{hero._height}}mt</p>
     </div>
-  </div>
+
+  </a>
 </div>

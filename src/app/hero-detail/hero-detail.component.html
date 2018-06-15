@@ -1,29 +1,30 @@
-<div class="hero-detail-container">
+<div class="hero-detail-container" *ngIf="hero$ | async">
   <div class="hero-detail">
     <div class="hero-pic">
-      <img src="https://i.annihil.us/u/prod/marvel/i/mg/9/30/538cd33e15ab7/standard_xlarge.jpg" alt="Hero Picture">
+      <img [src]="(hero$ | async)._picture" alt="Hero Picture">
     </div>
-    <h1 class="hero-name">Spiderman</h1>
+    <h1 class="hero-name">{{(hero$ | async)._nickname}}</h1>
     <div class="hero-form">
       <p>
         <label for="">
           Name:
-          <input type="text" value="Peter Parker" #name />
+          <input type="text" value="{{(hero$ | async)._name}}" #name />
         </label>
       </p>
       <p>
         <label for="">
           Height (mt):
-          <input type="text" value="1.75mt" #height />
+          <input type="text" value="{{(hero$ | async)._height}}" #height />
         </label>
       </p>
       <p>
         <label for="">
           Nickname:
-          <input type="text" value="Spiderman" #nickname />
+          <input type="text" value="{{(hero$ | async)._nickname}}" #nickname />
         </label>
       </p>
       <input class="btn btn-primary" type="button" value="Save" />
+      <input (click)="goBack()" class="btn btn-secondary" type="button" value="Go Back" />
     </div>
   </div>
 </div>
