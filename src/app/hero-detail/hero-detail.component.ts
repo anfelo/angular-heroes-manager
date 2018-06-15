@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 
 import { Hero } from '../models/hero';
 import { AppState } from '../models/app-state';
@@ -19,6 +19,9 @@ export class HeroDetailComponent implements OnInit {
 
   hero$: Observable<Hero>;
 
+  isValidName: boolean = true;
+  isValidHeight: boolean = true;
+
   constructor(
     private route: ActivatedRoute,
     private store: Store<AppState>,
@@ -32,18 +35,24 @@ export class HeroDetailComponent implements OnInit {
   getHero(): void {
     const nickname = this.route.snapshot.paramMap.get('nickname').toLowerCase();
     this.hero$ = this.store.select(state => state.heroes).pipe(
-      map(heroes => heroes.filter(hero => hero._nickname.toLowerCase() === nickname)[0])
+      map(heroes => heroes.filter(hero => hero._nickname.toLowerCase() === nickname)[0]),
+      tap(heroes => {
+        if(!heroes){
+          this.goBack();
+        }
+      })
     );
   }
 
-  saveHero(name: string, height: number, nickname: string, picture: string): void {
-    if(!this.validForm(name, height, nickname)) return;
+  saveHero(name: any, height: any, picture:any, nickname:any): void {
+    if(!this.isValidForm(name, height)) return;
     const hero: Hero = {
       _name: name,
       _height: height,
+      _picture: picture,
       _nickname: nickname,
-      _picture: picture
-    }
+    };
+
     this.store.dispatch(new heroActions.UpdateHeroAction(hero));
     this.goBack();
   }
@@ -52,8 +61,22 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
-  validForm(name: string, height: number, nickname: string): boolean {
-    return name.trim() && nickname.trim() && !isNaN(height);
+  isValidForm(name:any, height:any): boolean {
+    let validForm = true;
+    if(!name.trim()) {
+      this.isValidName = false;
+      validForm = false;
+    } else {
+      this.isValidName = true;
+    }
+
+    if(isNaN(height) || height.trim() === '' || height.trim() === '0') {
+      this.isValidHeight = false;
+      validForm = false;
+    } else {
+      this.isValidHeight = true;
+    }
+    return validForm;
   }
 
 }

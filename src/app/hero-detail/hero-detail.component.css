@@ -77,6 +77,10 @@ input[type="text"] {
   border-radius: 4px;
 }
 
+input[type="text"].is-invalid {
+  border: 2px solid tomato;
+}
+
 @media (min-width: 700px) {
   .hero-form {
     width: 48%;

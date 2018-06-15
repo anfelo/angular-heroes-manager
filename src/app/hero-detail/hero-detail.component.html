@@ -8,25 +8,19 @@
       <p>
         <label for="">
           Name:
-          <input type="text" value="{{(hero$ | async)._name}}" #name />
+          <input [class.is-invalid]="!isValidName" type="text" value="{{(hero$ | async)._name}}" #name />
         </label>
       </p>
       <p>
         <label for="">
           Height (mt):
-          <input type="text" value="{{(hero$ | async)._height}}" #height />
-        </label>
-      </p>
-      <p>
-        <label for="">
-          Nickname:
-          <input type="text" value="{{(hero$ | async)._nickname}}" #nickname />
+          <input [class.is-invalid]="!isValidHeight" type="text" value="{{(hero$ | async)._height}}" #height />
         </label>
       </p>
       <input type="hidden" value="{{(hero$ | async)._picture}}" #picture />
+      <input type="hidden" value="{{(hero$ | async)._nickname}}" #nickname />
       <input class="btn btn-primary" type="button" value="Save"
-             (click)="saveHero(name.value, height.value, nickname.value, picture.value);
-                      name.value=''; height.value=''; nickname.value=''; picture.value=''" />
+             (click)="saveHero(name.value, height.value, picture.value, nickname.value);"/>
       <input (click)="goBack()" class="btn btn-secondary" type="button" value="Go Back" />
     </div>
   </div>
